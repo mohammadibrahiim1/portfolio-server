@@ -43,6 +43,11 @@ async function run() {
 
 run().catch((error) => console.log(error));
 
+
+app.get("/", (req, res) => {
+    res.send("simple node server running");
+  });
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
