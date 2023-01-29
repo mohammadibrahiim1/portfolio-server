@@ -1,5 +1,4 @@
-// admin
-// password: 4iPYWmbDnpRk78jX
+
 
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const express = require("express");
