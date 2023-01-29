@@ -3,6 +3,7 @@
 
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const express = require("express");
+require("dotenv").config();
 const app = express();
 
 const cors = require("cors");
@@ -12,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 const uri =
-  "mongodb+srv://admin:4iPYWmbDnpRk78jX@cluster0.wuwpwwx.mongodb.net/?retryWrites=true&w=majority";
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.wuwpwwx.mongodb.net/?retryWrites=true&w=majority`;
 console.log(uri);
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
@@ -29,7 +30,7 @@ const client = new MongoClient(uri, {
 async function run() {
   const projectsCollection = client.db("portfolio").collection("projects");
 
-  
+
   try {
     app.get("/allprojects", async (req, res) => {
       const query = {};
